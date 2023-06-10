@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Beatbox.iml" filepath="$PROJECT_DIR$/Beatbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BeatBox.iml" filepath="$PROJECT_DIR$/BeatBox.iml" />
     </modules>
   </component>
 </project>
