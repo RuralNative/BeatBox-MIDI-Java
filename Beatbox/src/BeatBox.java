@@ -15,6 +15,8 @@ public class BeatBox {
     Sequencer sequencer;
     Sequence sequence;
     Track track;
+    String[] instrumentNames = {"Bass Drum", "Closed Hi-hat", "Open Hi-hat", "Acoustic Snare", "Crash Cymbal", "Hand Clap", "High Tom", "High Bongo", "Maracas", "Whistle", "Low Conga", "Cowbell", "Vibraslap", "Low-mid Tom", "High Agogo", "Open High Conga"};
+    int[] instruments = {35, 42, 46, 38, 49, 39, 50, 60, 70, 72, 64, 56, 58, 47, 67, 63};
 
     public static void main(String[] args) {
         new BeatBox().buildGUI();
@@ -48,9 +50,9 @@ public class BeatBox {
 
         //Instantiates Box to contain 16 labels created from a for loop and based from an array of String of instrument names
         Box nameBox = new Box(Y_AXIS);
-        //for (int i = 0; i < 16; i++) {
-            //nameBox.add(new Label(instrumentNames[i]));
-        //}
+        for (int i = 0; i < 16; i++) {
+            nameBox.add(new Label(instrumentNames[i]));
+        }
 
         //Add all containers - buttonBox and nameBox - to our JPanel (background)
         background.add(BorderLayout.EAST, buttonBox);
