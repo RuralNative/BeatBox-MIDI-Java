@@ -1,6 +1,8 @@
 import javax.sound.midi.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static javax.swing.BoxLayout.Y_AXIS;
@@ -35,9 +37,11 @@ public class BeatBox {
         //Instantiate Box to contain Buttons
         Box buttonBox = new Box(Y_AXIS);
 
-        //Instantiates and adds Buttons to our Box (buttonBox)
+        //Instantiates and adds Buttons to our Box (buttonBox), then attach listeners to each of them
         JButton start = new JButton("Start");
+        start.addActionListener(new MyStartListener());
         buttonBox.add(start);
+
         JButton stop = new JButton("Stop");
         buttonBox.add(stop);
         JButton upTempo = new JButton("Tempo Up");
@@ -150,5 +154,11 @@ public class BeatBox {
             e.printStackTrace();
         }
         return event;
+    }
+
+    public class MyStartListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            buildTrackAndStart();
+        }
     }
 }
