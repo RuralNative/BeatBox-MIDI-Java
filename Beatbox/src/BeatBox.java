@@ -118,7 +118,7 @@ public class BeatBox {
             //For loop to set the 16 values of the trackList by checking whether the JCheckBox belonging to a particular instrument is checked or not; if checked then add the value of key to the tracklist, if not then it will be set to 0
             for (int j = 0; j < 16; j++) {
                 //Get the position of the JCheckBox of the instrument i.e. Bass drum instrument own the 1st to 16th JCheckboxes (0-15), while the Open Hi-hat - the 3rd instrument - own the 33rd and 48th JCheckboxes (32-47)
-                JCheckBox jc = (JCheckBox) checkBoxList.get(j + (16*i));
+                JCheckBox jc = (JCheckBox) checkBoxList.get(j + (16 * i));
                 //If loop to check if JCheckbox is selected and adding value to the tracklist of the instrument (either the value of the instrument key or 0)
                 if (jc.isSelected()) {
                     trackList[j] = key;
@@ -126,8 +126,19 @@ public class BeatBox {
                     trackList[j] = 0;
                 }
             }
+            //Convert trackList into playable MIDI events
             makeTracks(trackList);
             track.add(makeEvent(176, 1, 127, 0, 16));
+        }
+        track.add(makeEvent(192, 9, 1, 0, 15));
+        //Add Sequence and play the Sequencer
+        try {
+            sequencer.setSequence(sequence);
+            sequencer.setLoopCount(sequencer.LOOP_CONTINUOUSLY);
+            sequencer.start();
+            sequencer.setTempoInBPM(120);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -139,7 +150,7 @@ public class BeatBox {
             //If key is not equal to 0, then add the NOTE ON and NOTE OFF events in the track
             if (key != 0) {
                 track.add(makeEvent(144, 9, key, 100, i));
-                track.add(makeEvent(128, 9, key, 100, i));
+                track.add(makeEvent(128, 9, key, 100, i + 1));
             }
         }
     }
