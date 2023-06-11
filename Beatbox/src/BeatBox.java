@@ -46,9 +46,9 @@ public class BeatBox {
 
         //Instantiates Box to contain 16 labels created from a for loop and based from an array of String of instrument names
         Box nameBox = new Box(Y_AXIS);
-        for (int i = 0; i < 16; i++) {
-            nameBox.add(new Label(instrumentNames[i]));
-        }
+        //for (int i = 0; i < 16; i++) {
+            //nameBox.add(new Label(instrumentNames[i]));
+        //}
 
         //Add all containers - buttonBox and nameBox - to our JPanel (background)
         background.add(BorderLayout.EAST, buttonBox);
@@ -73,7 +73,7 @@ public class BeatBox {
         }
 
         //Calls function setUpMIDI()
-        setUpMIDI();
+        //setUpMIDI();
 
         //Set JFrame properties
         theFrame.setBounds(50, 50, 300, 300);
