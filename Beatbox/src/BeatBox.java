@@ -105,5 +105,28 @@ public class BeatBox {
         //Delete old track, and make a new one
         sequence.deleteTrack(track);
         track = sequence.createTrack();
+
+        //For loop to create a trackList of integer values for each instrument defined in the integer[] array;
+        for (int i = 0; i < 16; i++) {
+            //Set value of trackList as an integer array of size 16, which may hold only two possible value options: 0 or the equivalent integer of the instrument i.e. 35 for Bass drum/42 for Closed Hi-hat
+            trackList = new int[16];
+
+            //Set the value of an integer variable to the equivalent integer value from instrument array of position i; for example if the i is equal to 0, it shall return 35 of instrument Bass Drum
+            int key = instruments[i];
+
+            //For loop to set the 16 values of the trackList by checking whether the JCheckBox belonging to a particular instrument is checked or not; if checked then add the value of key to the tracklist, if not then it will be set to 0
+            for (int j = 0; j < 16; j++) {
+                //Get the position of the JCheckBox of the instrument i.e. Bass drum instrument own the 1st to 16th JCheckboxes (0-15), while the Open Hi-hat - the 3rd instrument - own the 33rd and 48th JCheckboxes (32-47)
+                JCheckBox jc = (JCheckBox) checkBoxList.get(j + (16*i));
+                //If loop to check if JCheckbox is selected and adding value to the tracklist of the instrument (either the value of the instrument key or 0)
+                if (jc.isSelected()) {
+                    trackList[j] = key;
+                } else {
+                    trackList[j] = 0;
+                }
+            }
+            makeTracks(trackList);
+            track.add(makeEvent(176, 1, 127, 0, 16));
+        }
     }
 }
