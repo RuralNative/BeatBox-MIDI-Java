@@ -99,7 +99,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/BeatBox.java</url>
-          <line>87</line>
+          <line>84</line>
           <properties class="BeatBox" method="setUpMIDI">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -108,7 +108,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/BeatBox.java</url>
-          <line>24</line>
+          <line>21</line>
           <properties class="BeatBox" method="buildGUI">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

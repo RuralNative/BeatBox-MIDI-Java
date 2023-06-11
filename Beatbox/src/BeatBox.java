@@ -1,7 +1,4 @@
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.Track;
+import javax.sound.midi.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -141,5 +138,17 @@ public class BeatBox {
                 track.add(makeEvent(128, 9, key, 100, i));
             }
         }
+    }
+
+    public MidiEvent makeEvent(int comd, int chan, int one, int two, int tick) {
+        MidiEvent event = null;
+        try {
+            ShortMessage a = new ShortMessage();
+            a.setMessage(comd, chan, one, two);
+            event = new MidiEvent(a, tick);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return event;
     }
 }
