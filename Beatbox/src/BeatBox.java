@@ -76,8 +76,6 @@ public class BeatBox {
         //setUpMIDI();
 
         //Set JFrame properties
-        setUpMIDI();
-
         theFrame.setBounds(50, 50, 300, 300);
         theFrame.pack();
         theFrame.setVisible(true);
