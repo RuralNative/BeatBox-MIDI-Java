@@ -97,4 +97,13 @@ public class BeatBox {
             e.printStackTrace();
         }
     }
+
+    public void buildTrackAndStart() {
+        //Create array of integers to hold values for an instrument across 16 beats, and will be played later
+        int[] trackList = null;
+
+        //Delete old track, and make a new one
+        sequence.deleteTrack(track);
+        track = sequence.createTrack();
+    }
 }
