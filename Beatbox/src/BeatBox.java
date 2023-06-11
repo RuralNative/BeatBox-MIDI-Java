@@ -1,3 +1,4 @@
+import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
 import javax.sound.midi.Track;
@@ -73,11 +74,24 @@ public class BeatBox {
         }
 
         //Calls function setUpMIDI()
-        //setUpMIDI();
+        setUpMIDI();
 
         //Set JFrame properties
         theFrame.setBounds(50, 50, 300, 300);
         theFrame.pack();
         theFrame.setVisible(true);
+    }
+
+    public void setUpMIDI() {
+        //Sets value for Sequencer, Sequence, and Track with a set tempo with try/catch code block
+        try {
+            sequencer = MidiSystem.getSequencer();
+            sequencer.open();
+            sequence = new Sequence(Sequence.PPQ, 4);
+            track = sequence.createTrack();
+            sequencer.setTempoInBPM(120);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
