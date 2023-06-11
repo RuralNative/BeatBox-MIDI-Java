@@ -64,6 +64,14 @@ public class BeatBox {
         mainPanel = new JPanel(grid);
         background.add(BorderLayout.CENTER, mainPanel);
 
-            
+        // Using a for loop, instantiates 256 unchecked JCheckboxes that will be added to an ArrayList of JCheckboxes (checkBoxList) and to the JPanel (mainPanel)
+        for (int i = 0; i < 256; i++) {
+            JCheckBox c = new JCheckBox();
+            c.setSelected(false);
+            checkBoxList.add(c);
+            mainPanel.add(c);
+        }
+
+
     }
 }
