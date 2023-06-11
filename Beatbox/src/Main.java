@@ -72,6 +72,12 @@ public class BeatBox {
             mainPanel.add(c);
         }
 
+        //Calls function setUpMIDI()
         setUpMIDI();
+
+        //Set JFrame properties
+        theFrame.setBounds(50, 50, 300, 300);
+        theFrame.pack();
+        theFrame.setVisible(true);
     }
 }
