@@ -37,16 +37,21 @@ public class BeatBox {
         //Instantiate Box to contain Buttons
         Box buttonBox = new Box(Y_AXIS);
 
-        //Instantiates and adds Buttons to our Box (buttonBox), then attach listeners to each of them
+        //Instantiates and adds Button to our Box (buttonBox), then attach listeners to each of them
         JButton start = new JButton("Start");
         start.addActionListener(new MyStartListener());
         buttonBox.add(start);
-
+        
         JButton stop = new JButton("Stop");
+        stop.addActionListener(new MyStopListener());
         buttonBox.add(stop);
+
         JButton upTempo = new JButton("Tempo Up");
+        upTempo.addActionListener(new MyUpTempoListener());
         buttonBox.add(upTempo);
+
         JButton downTempo = new JButton("Tempo Down");
+        downTempo.addActionListener(new MyDownTempoListener());
         buttonBox.add(downTempo);
 
         //Instantiates Box to contain 16 labels created from a for loop and based from an array of String of instrument names
@@ -170,6 +175,26 @@ public class BeatBox {
     public class MyStartListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
             buildTrackAndStart();
+        }
+    }
+
+    public class MyStopListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            sequencer.stop();
+        }
+    }
+
+    public class MyUpTempoListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            float tempoFactor = sequencer.getTempoFactor();
+            sequencer.setTempoFactor((float) (tempoFactor * 1.03));
+        }
+    }
+
+    public class MyDownTempoListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            float tempoFactor = sequencer.getTempoFactor();
+            sequencer.setTempoFactor((float) (tempoFactor * 0.97));
         }
     }
 }
