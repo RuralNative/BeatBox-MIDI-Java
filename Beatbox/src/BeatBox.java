@@ -129,4 +129,17 @@ public class BeatBox {
             track.add(makeEvent(176, 1, 127, 0, 16));
         }
     }
+
+    //Adds events for an instrument for all 16 beats, with additional NOTE ON and NOTE OFF events based from the trackList made for the same instrument
+    public void makeTracks(int[] list) {
+        for (int i = 0; i < 16; i++) {
+            int key = list[i];
+
+            //If key is not equal to 0, then add the NOTE ON and NOTE OFF events in the track
+            if (key != 0) {
+                track.add(makeEvent(144, 9, key, 100, i));
+                track.add(makeEvent(128, 9, key, 100, i));
+            }
+        }
+    }
 }
