@@ -23,7 +23,7 @@ public class BeatBox {
         theFrame = new JFrame("Cyber BeatBox");
         theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //Instantiates the JPanel with BorderLayout and Border
+        //Instantiates the main JPanel with BorderLayout and Border
         BorderLayout layout = new BorderLayout();
         JPanel background = new JPanel(layout);
         background.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -52,10 +52,18 @@ public class BeatBox {
 
         //Add all containers - buttonBox and nameBox - to our JPanel (background)
         background.add(BorderLayout.EAST, buttonBox);
-        background.add(BorderLayout.WEST, nameBox);
 
-        //Add JPanel to JFrame
+        background.add(BorderLayout.WEST, nameBox);
+        //Add main JPanel to JFrame
         theFrame.getContentPane().add(background);
 
+        //Create a GridLayout of 16x16 dimension as Layout for a JPanel (mainPanel) and adds it to the main JPanel
+        GridLayout grid = new GridLayout(16, 16);
+        grid.setVgap(1);
+        grid.setHgap(2);
+        mainPanel = new JPanel(grid);
+        background.add(BorderLayout.CENTER, mainPanel);
+
+            
     }
 }
