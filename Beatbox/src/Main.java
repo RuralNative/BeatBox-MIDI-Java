@@ -72,6 +72,6 @@ public class BeatBox {
             mainPanel.add(c);
         }
 
-
+        setUpMIDI();
     }
 }
