@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static javax.swing.BoxLayout.Y_AXIS;
+
 public class BeatBox {
     JPanel mainPanel;
     JFrame theFrame;
@@ -24,8 +26,24 @@ public class BeatBox {
         background.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         checkBoxList = new ArrayList<JCheckBox>();
-        Box buttonBox = new Box(BoxLayout.Y_AXIS);
+        Box buttonBox = new Box(Y_AXIS);
 
-        JButton button = new JButton("Start");
+        JButton start = new JButton("Start");
+
+        JButton stop = new JButton("Stop");
+        
+        JButton upTempo = new JButton("Tempo Up");
+
+        JButton downTempo = new JButton("Tempo Down");
+
+        Box nameBox = new Box(Y_AXIS);
+        for (int i = 0; i < 16; i++) {
+            nameBox.add(new Label(instrumentNames[i]));
+        }
+
+        background.add(BorderLayout.EAST, buttonBox);
+        background.add(BorderLayout.WEST, nameBox);
+
+
     }
 }
