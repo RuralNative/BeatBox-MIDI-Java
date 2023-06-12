@@ -3,6 +3,7 @@ package model;
 import view.BeatBoxView;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class BeatBoxUIPresenter {
@@ -25,5 +26,4 @@ public class BeatBoxUIPresenter {
     public void setCheckBoxList(ArrayList<JCheckBox> checkBoxList) {
         model.setCheckBoxList(checkBoxList);
     }
-
 }

@@ -1,7 +1,13 @@
 package view;
 
+import model.BeatBoxMusicPresenter;
+import model.BeatBoxUIModel;
+import model.BeatBoxUIPresenter;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static javax.swing.BoxLayout.Y_AXIS;
@@ -9,28 +15,29 @@ import static javax.swing.BoxLayout.Y_AXIS;
 public class BeatBoxView {
     JPanel mainPanel;
     JFrame theFrame;
+    ArrayList<JCheckBox> checkBoxList;
+    String[] instrumentNames;
+
     public BeatBoxView() {
-
+        BeatBoxUIPresenter uiPresenter = new BeatBoxUIPresenter();
+        this.checkBoxList = uiPresenter.fetchCheckBoxList();
+        this.instrumentNames = uiPresenter.fetchInstrumentNames();
     }
-
 
     public void buildGUI() {
         //Instantiates the JFrame of the Application with necessary properties
-        theFrame = new JFrame("Cyber BeatBox");
-        theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Set JFrame properties
+
 
         //Instantiates the main JPanel with BorderLayout and Border
-        BorderLayout layout = new BorderLayout();
-        JPanel background = new JPanel(layout);
-        background.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
 
         //Instantiates CheckBox List
         checkBoxList = new ArrayList<JCheckBox>();
 
         //Instantiate Box to contain Buttons
-        Box buttonBox = new Box(Y_AXIS);
-
         //Instantiates and adds Button to our Box (buttonBox), then attach listeners to each of them
+        Box buttonBox = new Box(Y_AXIS);
         JButton start = new JButton("Start");
         start.addActionListener(new BeatBox.MyStartListener());
         buttonBox.add(start);
@@ -58,7 +65,7 @@ public class BeatBoxView {
 
         background.add(BorderLayout.WEST, nameBox);
         //Add main JPanel to JFrame
-        theFrame.getContentPane().add(background);
+
 
         //Create a GridLayout of 16x16 dimension as Layout for a JPanel (mainPanel) and adds it to the main JPanel
         GridLayout grid = new GridLayout(16, 16);
@@ -77,10 +84,45 @@ public class BeatBoxView {
 
         //Calls function setUpMIDI()
         setUpMIDI();
-
-        //Set JFrame properties
-        theFrame.setBounds(50, 50, 300, 300);
-        theFrame.pack();
-        theFrame.setVisible(true);
     }
+
+    private void createFrame(JFrame frame) {
+        frame = new JFrame("Cyber BeatBox");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBounds(50, 50, 300, 300);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    private void setUpBackgroundPanel(JFrame frame, JPanel backgroundPanel) {
+        BorderLayout layout = new BorderLayout();
+        backgroundPanel = new JPanel(layout);
+        backgroundPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        frame.getContentPane().add(backgroundPanel);
+    }
+
+    public class MyStartListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            buildTrackAndStart();
+        }
+    }
+
+    public class MyStopListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            sequencer.stop();
+        }
+    }
+
+    public class MyUpTempoListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            float tempoFactor = sequencer.getTempoFactor();
+            sequencer.setTempoFactor((float) (tempoFactor * 1.03));
+        }
+    }
+
+    public class MyDownTempoListener implements ActionListener {
+        public void actionPerformed(ActionEvent a) {
+            float tempoFactor = sequencer.getTempoFactor();
+            sequencer.setTempoFactor((float) (tempoFactor * 0.97));
+        }
 }

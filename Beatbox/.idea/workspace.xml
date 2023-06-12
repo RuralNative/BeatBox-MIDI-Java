@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b94a3848-7b8e-41ca-ad23-dd23c97911c3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BeatBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BeatBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/BeatBoxUIPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BeatBoxUIPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/BeatBoxView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/BeatBoxView.java" afterDir="false" />
     </list>
@@ -57,7 +59,7 @@
 }]]></component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="BeatBox" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="BeatBox" />
       <option name="VM_PARAMETERS" value="--module-path &quot;F:\Installers\Programming Resources\JavaFX\javafx-sdk-19\lib&quot; --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web,javafx.swt" />
       <method v="2">
