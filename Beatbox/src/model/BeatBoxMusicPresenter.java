@@ -103,4 +103,18 @@ public class BeatBoxMusicPresenter {
         }
         return event;
     }
+
+    public void stopSequence() {
+        sequencer.stop();
+    }
+
+    public void upTempo() {
+        float tempoFactor = sequencer.getTempoFactor();
+        sequencer.setTempoFactor((float) (tempoFactor * 1.03));
+    }
+
+    public void downTempo() {
+        float tempoFactor = sequencer.getTempoFactor();
+        sequencer.setTempoFactor((float) (tempoFactor * 0.97));
+    }
 }

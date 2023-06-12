@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import static javax.swing.BoxLayout.Y_AXIS;
 
 public class BeatBoxView {
-    JPanel mainPanel;
+    BeatBoxMusicPresenter musicPresenter;
     JFrame applicationFrame;
+    JPanel backgroundPanel;
+    JPanel checkBoxPanel;
     ArrayList<JCheckBox> checkBoxList;
     String[] instrumentNames;
 
@@ -22,40 +24,19 @@ public class BeatBoxView {
         BeatBoxUIPresenter uiPresenter = new BeatBoxUIPresenter();
         this.checkBoxList = uiPresenter.fetchCheckBoxList();
         this.instrumentNames = uiPresenter.fetchInstrumentNames();
+        buildGUI();
+
+        this.musicPresenter = new BeatBoxMusicPresenter();
+        musicPresenter.setUpMIDI();
     }
 
-    public void buildGUI() {
+    private void buildGUI() {
+        createFrame(applicationFrame);
+        setUpBackgroundPanel(applicationFrame, backgroundPanel);
+        setUpButtonBox(backgroundPanel);
+        setUpInstrumentLabelBox(backgroundPanel);
+        setUpCheckBoxPanel(backgroundPanel);
 
-
-        //Instantiates the JFrame of the Application with necessary properties
-        //Set JFrame properties
-
-
-        //Instantiates the main JPanel with BorderLayout and Border
-
-
-        //Instantiates CheckBox List
-        checkBoxList = new ArrayList<JCheckBox>();
-
-        //Instantiate Box to contain Buttons
-        //Instantiates and adds Button to our Box (buttonBox), then attach listeners to each of them
-
-
-        //Instantiates Box to contain 16 labels created from a for loop and based from an array of String of instrument names
-
-
-        //Add all containers - buttonBox and nameBox - to our JPanel (background)
-        //Add main JPanel to JFrame
-
-
-        //Create a GridLayout of 16x16 dimension as Layout for a JPanel (mainPanel) and adds it to the main JPanel
-
-
-        // Using a for loop, instantiates 256 unchecked JCheckboxes that will be added to an ArrayList of JCheckboxes (checkBoxList) and to the JPanel (mainPanel)
-
-
-        //Calls function setUpMIDI()
-        setUpMIDI();
     }
 
     private void createFrame(JFrame frame) {
@@ -107,39 +88,37 @@ public class BeatBoxView {
         GridLayout grid = new GridLayout(16, 16);
         grid.setVgap(1);
         grid.setHgap(2);
-        mainPanel = new JPanel(grid);
-        backgroundPanel.add(BorderLayout.CENTER, mainPanel);
+        checkBoxPanel = new JPanel(grid);
+        backgroundPanel.add(BorderLayout.CENTER, checkBoxPanel);
         for (int i = 0; i < 256; i++) {
             JCheckBox c = new JCheckBox();
             c.setSelected(false);
             checkBoxList.add(c);
-            mainPanel.add(c);
+            checkBoxPanel.add(c);
         }
     }
 
     public class MyStartListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
-            buildTrackAndStart();
+            musicPresenter.buildTrackAndStart();
         }
     }
 
     public class MyStopListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
-            sequencer.stop();
+            musicPresenter.stopSequence();
         }
     }
 
     public class MyUpTempoListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
-            float tempoFactor = sequencer.getTempoFactor();
-            sequencer.setTempoFactor((float) (tempoFactor * 1.03));
+            musicPresenter.upTempo();
         }
     }
 
     public class MyDownTempoListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
-            float tempoFactor = sequencer.getTempoFactor();
-            sequencer.setTempoFactor((float) (tempoFactor * 0.97));
+            musicPresenter.downTempo();
         }
     }
 }
