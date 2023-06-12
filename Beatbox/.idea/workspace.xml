@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b94a3848-7b8e-41ca-ad23-dd23c97911c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/BeatBoxMusicPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeatBoxMusicModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BeatBoxMusicModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BeatBoxUIPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BeatBoxUIPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/BeatBoxView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/BeatBoxView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -1,6 +1,5 @@
 package model;
 
-import model.BeatBoxUIModel;
 import view.BeatBoxView;
 
 import javax.swing.*;
@@ -13,6 +12,10 @@ public class BeatBoxUIPresenter {
     public BeatBoxUIPresenter() {
         this.model = new BeatBoxUIModel();
         this.view = new BeatBoxView();
+    }
+
+    public String[] fetchInstrumentNames() {
+        return model.getInstrumentNames();
     }
 
     public ArrayList<JCheckBox> fetchCheckBoxList() {
