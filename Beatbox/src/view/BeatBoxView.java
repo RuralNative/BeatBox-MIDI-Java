@@ -97,7 +97,6 @@ public class BeatBoxView {
             checkBoxPanel.add(c);
         }
         uiPresenter.setCheckBoxList(this.checkBoxList);
-        System.out.println(uiPresenter.fetchCheckBoxList().size());
     }
 
     public class MyStartListener implements ActionListener {

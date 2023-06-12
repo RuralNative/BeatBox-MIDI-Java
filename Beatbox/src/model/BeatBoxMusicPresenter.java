@@ -40,7 +40,6 @@ public class BeatBoxMusicPresenter {
         //Create array of integers to hold values for an instrument across 16 beats, and will be played later
         int[] trackList = null;
         this.checkBoxList = uiPresenter.fetchCheckBoxList();
-        System.out.println(uiPresenter.fetchCheckBoxList().size());
 
         //Delete old track, and make a new one
         sequence.deleteTrack(track);

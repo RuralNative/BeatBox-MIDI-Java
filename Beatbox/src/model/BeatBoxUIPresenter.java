@@ -10,7 +10,7 @@ public class BeatBoxUIPresenter {
     private final BeatBoxUIModel model;
 
     public BeatBoxUIPresenter() {
-        this.model = new BeatBoxUIModel();
+        this.model = BeatBoxUIModel.getInstance();
     }
 
     public String[] fetchInstrumentNames() {
