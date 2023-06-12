@@ -37,22 +37,7 @@ public class BeatBoxView {
 
         //Instantiate Box to contain Buttons
         //Instantiates and adds Button to our Box (buttonBox), then attach listeners to each of them
-        Box buttonBox = new Box(Y_AXIS);
-        JButton start = new JButton("Start");
-        start.addActionListener(new BeatBox.MyStartListener());
-        buttonBox.add(start);
 
-        JButton stop = new JButton("Stop");
-        stop.addActionListener(new BeatBox.MyStopListener());
-        buttonBox.add(stop);
-
-        JButton upTempo = new JButton("Tempo Up");
-        upTempo.addActionListener(new BeatBox.MyUpTempoListener());
-        buttonBox.add(upTempo);
-
-        JButton downTempo = new JButton("Tempo Down");
-        downTempo.addActionListener(new BeatBox.MyDownTempoListener());
-        buttonBox.add(downTempo);
 
         //Instantiates Box to contain 16 labels created from a for loop and based from an array of String of instrument names
         Box nameBox = new Box(Y_AXIS);
@@ -101,6 +86,26 @@ public class BeatBoxView {
         frame.getContentPane().add(backgroundPanel);
     }
 
+    private void setUpButtonBox() {
+        Box buttonBox = new Box(Y_AXIS);
+
+        JButton startButton = new JButton("Start");
+        buttonBox.add(startButton);
+        startButton.addActionListener(new BeatBoxView.MyStartListener());
+
+        JButton stopButton = new JButton("Stop");
+        buttonBox.add(stopButton);
+        stopButton.addActionListener(new BeatBoxView.MyStopListener());
+
+        JButton upTempoButton = new JButton("Tempo Up");
+        buttonBox.add(upTempoButton);
+        upTempoButton.addActionListener(new BeatBoxView.MyUpTempoListener());
+
+        JButton downTempoButton = new JButton("Tempo Down");
+        buttonBox.add(downTempoButton);
+        downTempoButton.addActionListener(new BeatBoxView.MyDownTempoListener());
+    }
+
     public class MyStartListener implements ActionListener {
         public void actionPerformed(ActionEvent a) {
             buildTrackAndStart();
@@ -125,4 +130,7 @@ public class BeatBoxView {
             float tempoFactor = sequencer.getTempoFactor();
             sequencer.setTempoFactor((float) (tempoFactor * 0.97));
         }
+    }
 }
+
+

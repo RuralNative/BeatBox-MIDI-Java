@@ -92,30 +92,5 @@ public class BeatBox {
         }
         return event;
     }
-
-    public class MyStartListener implements ActionListener {
-        public void actionPerformed(ActionEvent a) {
-            buildTrackAndStart();
-        }
-    }
-
-    public class MyStopListener implements ActionListener {
-        public void actionPerformed(ActionEvent a) {
-            sequencer.stop();
-        }
-    }
-
-    public class MyUpTempoListener implements ActionListener {
-        public void actionPerformed(ActionEvent a) {
-            float tempoFactor = sequencer.getTempoFactor();
-            sequencer.setTempoFactor((float) (tempoFactor * 1.03));
-        }
-    }
-
-    public class MyDownTempoListener implements ActionListener {
-        public void actionPerformed(ActionEvent a) {
-            float tempoFactor = sequencer.getTempoFactor();
-            sequencer.setTempoFactor((float) (tempoFactor * 0.97));
-        }
     }
 }
