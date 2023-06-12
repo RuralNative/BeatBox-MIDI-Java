@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import static javax.swing.BoxLayout.Y_AXIS;
 
 public class BeatBoxView {
+    JPanel mainPanel;
+    JFrame theFrame;
     public BeatBoxView() {
 
     }
