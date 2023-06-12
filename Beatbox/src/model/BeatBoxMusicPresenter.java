@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class BeatBoxMusicPresenter {
     private final BeatBoxMusicModel model;
+    private BeatBoxUIPresenter uiPresenter;
     Sequencer sequencer;
     Sequence sequence;
     Track track;
@@ -15,8 +16,7 @@ public class BeatBoxMusicPresenter {
     public BeatBoxMusicPresenter() {
         this.model = new BeatBoxMusicModel();
         this.instrumentsKey = model.getInstruments();
-        BeatBoxUIModel uiModel = new BeatBoxUIModel();
-        this.checkBoxList = uiModel.getCheckBoxList();
+        uiPresenter = new BeatBoxUIPresenter();
     }
 
     public int[] fetchInstrumentKeys() {
@@ -39,6 +39,8 @@ public class BeatBoxMusicPresenter {
     public void buildTrackAndStart() {
         //Create array of integers to hold values for an instrument across 16 beats, and will be played later
         int[] trackList = null;
+        this.checkBoxList = uiPresenter.fetchCheckBoxList();
+        System.out.println(uiPresenter.fetchCheckBoxList().size());
 
         //Delete old track, and make a new one
         sequence.deleteTrack(track);

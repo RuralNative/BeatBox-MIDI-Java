@@ -14,6 +14,7 @@ import static javax.swing.BoxLayout.Y_AXIS;
 
 public class BeatBoxView {
     BeatBoxMusicPresenter musicPresenter;
+    BeatBoxUIPresenter uiPresenter;
     JFrame applicationFrame;
     JPanel backgroundPanel;
     JPanel checkBoxPanel;
@@ -21,7 +22,7 @@ public class BeatBoxView {
     String[] instrumentNames;
 
     public BeatBoxView() {
-        BeatBoxUIPresenter uiPresenter = new BeatBoxUIPresenter();
+        uiPresenter = new BeatBoxUIPresenter();
         this.checkBoxList = uiPresenter.fetchCheckBoxList();
         this.instrumentNames = uiPresenter.fetchInstrumentNames();
         buildGUI();
@@ -31,25 +32,24 @@ public class BeatBoxView {
     }
 
     private void buildGUI() {
-        createFrame(applicationFrame);
-        setUpBackgroundPanel(applicationFrame, backgroundPanel);
+        createFrame();
+        setUpBackgroundPanel(applicationFrame);
         setUpButtonBox(backgroundPanel);
         setUpInstrumentLabelBox(backgroundPanel);
         setUpCheckBoxPanel(backgroundPanel);
-
     }
 
-    private void createFrame(JFrame frame) {
-        frame = new JFrame("Cyber BeatBox");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(50, 50, 300, 300);
-        frame.pack();
-        frame.setVisible(true);
+    private void createFrame() {
+        this.applicationFrame = new JFrame("Cyber BeatBox");
+        applicationFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        applicationFrame.setBounds(50, 50, 300, 300);
+        applicationFrame.pack();
+        applicationFrame.setVisible(true);
     }
 
-    private void setUpBackgroundPanel(JFrame frame, JPanel backgroundPanel) {
+    private void setUpBackgroundPanel(JFrame frame) {
         BorderLayout layout = new BorderLayout();
-        backgroundPanel = new JPanel(layout);
+        this.backgroundPanel = new JPanel(layout);
         backgroundPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         frame.getContentPane().add(backgroundPanel);
     }
@@ -96,6 +96,8 @@ public class BeatBoxView {
             checkBoxList.add(c);
             checkBoxPanel.add(c);
         }
+        uiPresenter.setCheckBoxList(this.checkBoxList);
+        System.out.println(uiPresenter.fetchCheckBoxList().size());
     }
 
     public class MyStartListener implements ActionListener {

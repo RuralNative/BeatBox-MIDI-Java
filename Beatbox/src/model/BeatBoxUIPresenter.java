@@ -8,11 +8,9 @@ import java.util.ArrayList;
 
 public class BeatBoxUIPresenter {
     private final BeatBoxUIModel model;
-    private final BeatBoxView view;
 
     public BeatBoxUIPresenter() {
         this.model = new BeatBoxUIModel();
-        this.view = new BeatBoxView();
     }
 
     public String[] fetchInstrumentNames() {
